@@ -21,18 +21,18 @@
 		"eslint-plugin-svelte": "^2.30.0",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.10.1",
-		"prisma": "^5.5.2",
 		"svelte": "^4.0.5",
 		"svelte-check": "^3.4.3",
+		"sveltekit-superforms": "^1.9.0",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
-		"vite": "^4.4.2"
+		"vite": "^4.4.2",
+		"zod": "^3.22.4"
 	},
 	"type": "module",
 	"dependencies": {
-		"@lucia-auth/adapter-prisma": "^3.0.2",
-		"@lucia-auth/sveltekit": "^0.6.11",
-		"@prisma/client": "^5.5.2",
-		"lucia-auth": "^1.8.0"
+		"@lucia-auth/adapter-mongoose": "^3.0.0",
+		"lucia": "^2.7.3",
+		"mongoose": "^8.0.0"
 	}
 }
