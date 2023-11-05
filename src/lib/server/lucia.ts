@@ -1,12 +1,22 @@
 import { dev } from '$app/environment';
-import { prisma } from '$lib/server/prisma';
-import { prisma as prismaAdapter } from '@lucia-auth/adapter-prisma';
-import lucia from 'lucia-auth';
+import { DATABASE_URL } from '$env/static/private';
+import { Key } from '$lib/schema/key.schema';
+import { Session } from '$lib/schema/session.schema';
+import { User } from '$lib/schema/user.schema';
+import { mongoose } from '@lucia-auth/adapter-mongoose';
+import { lucia } from 'lucia';
+import { sveltekit } from 'lucia/middleware';
+import mongodb from 'mongoose';
 
 export const auth = lucia({
-	adapter: prismaAdapter(prisma),
+	adapter: mongoose({
+		User,
+		Key,
+		Session
+	}),
 	env: dev ? 'DEV' : 'PROD',
-	transformDatabaseUser: (userData) => {
+	middleware: sveltekit(),
+	getUserAttributes: (userData) => {
 		return {
 			userId: userData.id,
 			username: userData.username
@@ -14,4 +24,4 @@ export const auth = lucia({
 	}
 });
 
-export type Auth = typeof auth;
+mongodb.connect(DATABASE_URL, {});
