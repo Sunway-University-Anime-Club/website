@@ -8,9 +8,6 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			auth: import('lucia').AuthRequest;
-			validate: import('@lucia-auth/sveltekit').Validate;
-			validateUser: import('@lucia-auth/sveltekit').ValidateUser;
-			setSession: import('@lucia-auth/sveltekit').SetSession;
 		}
 		// interface PageData {}
 		// interface Platform {}
