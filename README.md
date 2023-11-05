@@ -1,8 +1,8 @@
 # SUAC Web
 
-The website and admin dashboard for the Sunway University Anime Club. This handles user registration and payments they make. 
+The website and admin dashboard for the Sunway University Anime Club. This handles user registration and payments they make.
 
-The dashboard uses [SupaBase](https://supabase.com/) backend for user authentication and data storing.
+The dashboard uses [Lucia](https://lucia-auth.com/) user authentication and [MongoDB](https://www.mongodb.com/) as database.
 
 ## Creating a project
 
