@@ -5,8 +5,7 @@ import { superValidate } from 'sveltekit-superforms/server';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
-	console.log(typeof event.locals.validate?.(), 'test');
-	const session = await event.locals.validate?.();
+	const session = await event.locals.auth.validate();
 	if (session) throw redirect(302, '/');
 
 	const form = await superValidate(event, registerSchema);
