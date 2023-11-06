@@ -2,7 +2,7 @@ import { dev } from '$app/environment';
 import { DATABASE_URL } from '$env/static/private';
 import { Key } from '$lib/schema/key.schema';
 import { Session } from '$lib/schema/session.schema';
-import { User } from '$lib/schema/user.schema';
+import { User, type IUser } from '$lib/schema/user.schema';
 import { mongoose } from '@lucia-auth/adapter-mongoose';
 import { lucia } from 'lucia';
 import { sveltekit } from 'lucia/middleware';
@@ -16,10 +16,11 @@ export const auth = lucia({
 	}),
 	env: dev ? 'DEV' : 'PROD',
 	middleware: sveltekit(),
-	getUserAttributes: (userData) => {
+	getUserAttributes: (userData): Omit<IUser, '_id'> & { userId: string } => {
 		return {
 			userId: userData.id,
-			username: userData.username
+			username: userData.username,
+			role: userData.role
 		};
 	}
 });
