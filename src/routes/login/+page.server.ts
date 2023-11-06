@@ -6,7 +6,7 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	const session = await event.locals.auth.validate();
-	if (session) throw redirect(302, '/');
+	if (session) throw redirect(302, '/admin');
 
 	const form = await superValidate(event, loginSchema);
 	return { form };
@@ -24,6 +24,6 @@ export const actions: Actions = {
 		});
 
 		event.locals.auth.setSession(session);
-		throw redirect(302, '/');
+		throw redirect(302, '/admin');
 	}
 };
