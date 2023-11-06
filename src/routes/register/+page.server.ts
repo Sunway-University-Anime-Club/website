@@ -1,4 +1,5 @@
 import { registerSchema } from '$lib/forms/register';
+import { UserRole } from '$lib/schema/user.schema';
 import { auth } from '$lib/server/lucia';
 import { fail, redirect, type Actions } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
@@ -24,7 +25,8 @@ export const actions: Actions = {
 				password: form.data.password
 			},
 			attributes: {
-				username: form.data.username
+				username: form.data.username,
+				role: UserRole.MEMBER
 			}
 		});
 
