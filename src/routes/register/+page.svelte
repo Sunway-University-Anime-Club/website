@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { registerSchema } from '$lib/forms/register.js';
+	import { registerSchema } from '$lib/forms/register';
 	import { superForm } from 'sveltekit-superforms/client';
 
 	export let data;
