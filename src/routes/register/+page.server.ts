@@ -21,7 +21,7 @@ export const actions: Actions = {
 		await auth.createUser({
 			key: {
 				providerId: 'username',
-				providerUserId: 'username',
+				providerUserId: form.data.username,
 				password: form.data.password
 			},
 			attributes: {
